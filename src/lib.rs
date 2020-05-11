@@ -8,14 +8,12 @@ use winapi::{
     um::{
         libloaderapi::{DisableThreadLibraryCalls, FreeLibraryAndExitThread},
         processthreadsapi::CreateThread,
-        synchapi::Sleep,
         winnt::DLL_PROCESS_ATTACH,
     },
 };
 
 extern "system" fn on_attach(dll: LPVOID) -> DWORD {
     unsafe {
-        Sleep(1000);
         FreeLibraryAndExitThread(dll.cast(), 0);
     }
 
