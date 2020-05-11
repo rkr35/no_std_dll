@@ -13,10 +13,6 @@ use winapi::{
     },
 };
 
-// Pick up _DllMainCRTStartup.
-#[link(name = "msvcrt")]
-extern {}
-
 extern "system" fn on_attach(dll: LPVOID) -> DWORD {
     unsafe {
         Sleep(1000);
@@ -38,3 +34,7 @@ extern "system" fn DllMain(dll: HINSTANCE, reason: DWORD, _: LPVOID) -> BOOL {
 
     TRUE
 }
+
+// Pick up _DllMainCRTStartup.
+#[link(name = "msvcrt")]
+extern {}
