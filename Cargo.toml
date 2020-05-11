@@ -18,9 +18,11 @@ debug = false
 
 [dependencies]
 panic-never = "0.1"
+wchar = "0.6"
 winapi = { version = "0.3", features = [
     "libloaderapi",
     "minwindef",
     "processthreadsapi",
     "winnt",
+    "winuser",
 ]}

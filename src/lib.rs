@@ -3,16 +3,28 @@
 use core::ptr;
 
 use panic_never as _;
+use wchar::wch_c as w;
 use winapi::{
     shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID, TRUE},
     um::{
         libloaderapi::{DisableThreadLibraryCalls, FreeLibraryAndExitThread},
         processthreadsapi::CreateThread,
         winnt::DLL_PROCESS_ATTACH,
+        winuser::{MessageBoxW, MB_OK},
     },
 };
 
+macro_rules! msg_box {
+    ($text:literal, $caption:literal) => {
+        let text = w!($text);
+        let caption = w!($caption);
+        unsafe { MessageBoxW(ptr::null_mut(), text.as_ptr(), caption.as_ptr(), MB_OK) }
+    }
+}
+
 extern "system" fn on_attach(dll: LPVOID) -> DWORD {
+    msg_box!("Press OK to free library.", "on_attach()");
+
     unsafe {
         FreeLibraryAndExitThread(dll.cast(), 0);
     }
