@@ -1,0 +1,46 @@
+00007FFE64761000 | 56                       | push rsi                                             |
+00007FFE64761001 | 48:83EC 20               | sub rsp,20                                           |
+00007FFE64761005 | 48:89CE                  | mov rsi,rcx                                          |
+00007FFE64761008 | 48:8D15 51110000         | lea rdx,qword ptr ds:[7FFE64762160]                  | 00007FFE64762160:L"Press OK to free library."
+00007FFE6476100F | 4C:8D05 7E110000         | lea r8,qword ptr ds:[7FFE64762194]                   | 00007FFE64762194:L"on_attach()"
+00007FFE64761016 | 31C9                     | xor ecx,ecx                                          |
+00007FFE64761018 | 45:31C9                  | xor r9d,r9d                                          |
+00007FFE6476101B | E8 980B0000              | call <no_std_dll.MessageBoxW>                        |
+00007FFE64761020 | 48:89F1                  | mov rcx,rsi                                          |
+00007FFE64761023 | 31D2                     | xor edx,edx                                          |
+00007FFE64761025 | E8 760B0000              | call <no_std_dll.FreeLibraryAndExitThread>           |
+00007FFE6476102A | 31C0                     | xor eax,eax                                          |
+00007FFE6476102C | 48:83C4 20               | add rsp,20                                           |
+00007FFE64761030 | 5E                       | pop rsi                                              |
+00007FFE64761031 | C3                       | ret                                                  |
+00007FFE64761032 | CC                       | int3                                                 |
+00007FFE64761033 | CC                       | int3                                                 |
+00007FFE64761034 | CC                       | int3                                                 |
+00007FFE64761035 | CC                       | int3                                                 |
+00007FFE64761036 | CC                       | int3                                                 |
+00007FFE64761037 | CC                       | int3                                                 |
+00007FFE64761038 | CC                       | int3                                                 |
+00007FFE64761039 | CC                       | int3                                                 |
+00007FFE6476103A | CC                       | int3                                                 |
+00007FFE6476103B | CC                       | int3                                                 |
+00007FFE6476103C | CC                       | int3                                                 |
+00007FFE6476103D | CC                       | int3                                                 |
+00007FFE6476103E | CC                       | int3                                                 |
+00007FFE6476103F | CC                       | int3                                                 |
+00007FFE64761040 | 56                       | push rsi                                             |
+00007FFE64761041 | 48:83EC 30               | sub rsp,30                                           |
+00007FFE64761045 | 83FA 01                  | cmp edx,1                                            |
+00007FFE64761048 | 75 2C                    | jne no_std_dll.7FFE64761076                          |
+00007FFE6476104A | 48:89CE                  | mov rsi,rcx                                          |
+00007FFE6476104D | E8 540B0000              | call <no_std_dll.DisableThreadLibraryCalls>          |
+00007FFE64761052 | 4C:8D05 A7FFFFFF         | lea r8,qword ptr ds:[<sub_7FFE64761000>]             |
+00007FFE64761059 | 31C9                     | xor ecx,ecx                                          |
+00007FFE6476105B | 31D2                     | xor edx,edx                                          |
+00007FFE6476105D | 49:89F1                  | mov r9,rsi                                           |
+00007FFE64761060 | 48:C74424 28 00000000    | mov qword ptr ss:[rsp+28],0                          |
+00007FFE64761069 | C74424 20 00000000       | mov dword ptr ss:[rsp+20],0                          |
+00007FFE64761071 | E8 360B0000              | call <no_std_dll.CreateThread>                       |
+00007FFE64761076 | B8 01000000              | mov eax,1                                            |
+00007FFE6476107B | 48:83C4 30               | add rsp,30                                           |
+00007FFE6476107F | 5E                       | pop rsi                                              |
+00007FFE64761080 | C3                       | ret                                                  |
