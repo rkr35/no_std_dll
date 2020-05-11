@@ -7,7 +7,14 @@ edition = "2018"
 [lib]
 crate-type = ["cdylib"]
 
+[profile.dev]
+panic = "abort"
+
+[profile.release]
+panic = "abort"
+
 [dependencies]
+panic-never = "0.1"
 winapi = { version = "0.3", features = [
     "libloaderapi",
     "minwindef",

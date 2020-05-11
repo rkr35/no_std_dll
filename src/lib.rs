@@ -1,5 +1,8 @@
+#![no_std]
+
 use core::ptr;
 
+use panic_never as _;
 use winapi::{
     shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID, TRUE},
     um::{
@@ -9,6 +12,10 @@ use winapi::{
         winnt::DLL_PROCESS_ATTACH,
     },
 };
+
+// Pick up _DllMainCRTStartup.
+#[link(name = "msvcrt")]
+extern {}
 
 extern "system" fn on_attach(dll: LPVOID) -> DWORD {
     unsafe {
