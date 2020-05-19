@@ -17,7 +17,13 @@ codegen-units = 1
 debug = false
 
 [dependencies]
+# In debug builds, panics will cause an infinte loop at runtime.
 panic-never = "0.1"
+
+# In release builds, the linker will throw an error if the program
+# contains a panicking branch.
+panic-halt = "0.2"
+
 wchar = "0.6"
 winapi = { version = "0.3", features = [
     "libloaderapi",

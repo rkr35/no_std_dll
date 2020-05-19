@@ -2,7 +2,12 @@
 
 use core::ptr;
 
+#[cfg(debug_assertions)]
+use panic_halt as _;
+
+#[cfg(not(debug_assertions))]
 use panic_never as _;
+
 use wchar::wch_c as w;
 use winapi::{
     shared::minwindef::{BOOL, DWORD, HINSTANCE, LPVOID, TRUE},
